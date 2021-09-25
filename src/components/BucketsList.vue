@@ -49,15 +49,18 @@ export default {
                     message:'连接Minio服务器失败！'
                 })
             }
-            buckets.forEach(bucket => {
-                bucket.children = [];
-                let stream = minioClient.listObjects(bucket.name,'',false)
-                stream.on('data',(obj) => {
-                    console.log(obj);
-                });
-                stream.on('error',error => console.log(error));
-                _this.documentTree.push(bucket)
-            });
+            this.documentTree = [];
+            for(var i = 0; i < buckets.length; i++){
+              console.log(buckets[i])
+              buckets[i].children = [];
+              let bucket = {
+                name:buckets[i].name,
+                children:[],
+                file:false
+              }
+              this.documentTree.push(bucket);
+            }
+            
         });
     }
 }

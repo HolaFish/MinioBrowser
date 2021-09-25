@@ -12,7 +12,9 @@
       <buckets-list></buckets-list>
     </v-navigation-drawer>
     <v-main>
-      abc
+      <v-container fluid>
+     
+    </v-container>
     </v-main>
   </v-app>
 </template>
